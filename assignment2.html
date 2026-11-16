@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Enjoy delicious meals at Royal Bites in Lekki, Lagos."
+  />
+  <title>ROYAL BITES | Welcome to Royal Bites</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fffaf4;
+      color: #30251f;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #321d12;
+      color: #fff;
+      padding: 16px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .logo {
+      color: #ffce78;
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: #ffce78;
+    }
+
+    section {
+      padding: 70px 7%;
+      scroll-margin-top: 70px;
+    }
+
+    .hero {
+      min-height: 480px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 40px 7%;
+      background:
+        linear-gradient(rgba(35, 20, 12, 0.65), rgba(35, 20, 12, 0.7)),
+        url("https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1800&q=85")
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      color: #ffce78;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.5rem, 4vw, 2.3rem);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin: 0 auto 25px;
+      max-width: 620px;
+    }
+
+    .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 6px;
+      background: #df7c2d;
+      color: #fff;
+      padding: 12px 22px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .button:hover,
+    .button:focus {
+      background: #bd5f1c;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      color: #713c20;
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      margin-bottom: 8px;
+    }
+
+    .section-heading p {
+      color: #62544b;
+    }
+
+    .about-content {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-content p + p {
+      margin-top: 14px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .food-card {
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #efdfce;
+      border-radius: 12px;
+      box-shadow: 0 5px 16px rgba(62, 39, 23, 0.09);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .food-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 9px 22px rgba(62, 39, 23, 0.14);
+    }
+
+    .food-card img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .food-card-content {
+      padding: 18px;
+    }
+
+    .food-card h3 {
+      color: #713c20;
+      font-size: 1.25rem;
+      margin-bottom: 7px;
+    }
+
+    .food-card p {
+      color: #5e534c;
+      font-size: 0.95rem;
+    }
+
+    .price {
+      display: block;
+      color: #a64e1c;
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    .contact {
+      background: #f5eadc;
+    }
+
+    .contact-layout {
+      max-width: 1050px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .contact-form,
+    .contact-info {
+      background: #fff;
+      border: 1px solid #efdfce;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 16px rgba(62, 39, 23, 0.07);
+    }
+
+    .contact-form h3,
+    .contact-info h3 {
+      color: #713c20;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cfc2b6;
+      border-radius: 6px;
+      color: #30251f;
+      font: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: 2px solid #df7c2d;
+      border-color: #df7c2d;
+    }
+
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-info p {
+      margin-bottom: 12px;
+    }
+
+    .contact-info a {
+      color: #713c20;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-info strong {
+      color: #3b2a1e;
+    }
+
+    .form-note {
+      color: #62544b;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+
+    footer {
+      background: #321d12;
+      color: #fff;
+      text-align: center;
+      padding: 24px 7%;
+    }
+
+    .thank-you {
+      color: #ffce78;
+      font-size: 1.15rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 12px 18px;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="#home">ROYAL BITES</a>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>ROYAL BITES</h1>
+        <h2>Welcome to Royal Bites</h2>
+        <p>
+          Freshly prepared favorites, bold flavors, and warm hospitality.
+          Come hungry and leave happy.
+        </p>
+        <a class="button" href="#menu">Explore Our Menu</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-heading">
+        <h2>About Royal Bites</h2>
+        <p>Delicious food and friendly service, made for sharing.</p>
+      </div>
+
+      <div class="about-content">
+        <p>
+          Royal Bites brings together satisfying meals, carefully chosen
+          ingredients, and the rich flavors our guests love. From quick bites
+          to filling meals, we prepare every order with care.
+        </p>
+        <p>
+          Whether you’re meeting friends, enjoying a family meal, or ordering
+          your favorite dish, we want every visit to feel special.
+        </p>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="section-heading">
+        <h2>Our Menu</h2>
+        <p>Explore a few of our Royal Bites favorites.</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80"
+            alt="Juicy burger with fresh toppings"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Royal Classic Burger</h3>
+            <p>Grilled beef, melted cheese, crisp lettuce, tomato, and house sauce in a toasted bun.</p>
+            <span class="price">₦4,500</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=900&q=80"
+            alt="Freshly baked pizza topped with cheese and herbs"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Garden Margherita Pizza</h3>
+            <p>Tomato sauce, mozzarella, fresh basil, and a golden-baked crust.</p>
+            <span class="price">₦6,800</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="c:\Users\HP\Pictures\IMG-20261107-WA0005.jpg"
+            alt="Mazorella n cheese"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Mazorella n cheese</h3>
+            <p>Tender cheese with a spicy taste.</p>
+            <span class="price">₦5,900</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+            alt="Colorful fresh garden salad"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Fresh Garden Salad</h3>
+            <p>Crisp greens, cucumber, tomatoes, carrots, and our light house dressing.</p>
+            <span class="price">₦3,700</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=900&q=80"
+            alt="Crispy golden fried chicken"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Crispy Fried Chicken</h3>
+            <p>Golden, seasoned chicken served with fries and a tasty dipping sauce.</p>
+            <span class="price">₦8,200</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=900&q=80"
+            alt="A plate of Nigerian-style jollof rice"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Spicy Jollof Rice</h3>
+            <p>Richly seasoned rice cooked with tomatoes and peppers for a classic, comforting flavor.</p>
+            <span class="price">₦5,200</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+            alt="Grilled meat served with vegetables"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Beef Suya Bowl</h3>
+            <p>Spiced grilled beef served with rice, plantain, and a side of pepper sauce.</p>
+            <span class="price">₦7,400</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=900&q=80"
+            alt="Seafood platter with prawns and fish"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Seafood Deluxe Platter</h3>
+            <p>A generous seafood selection with signature seasoning and fresh sides.</p>
+            <span class="price">₦10,500</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=900&q=80"
+            alt="Grilled prawns served with fresh sides"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Grilled Prawns &amp; Plantain</h3>
+            <p>Seasoned grilled prawns served with sweet plantain and fresh greens.</p>
+            <span class="price">₦9,100</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+            alt="Warm bowl of spicy soup"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Goat Meat Pepper Soup</h3>
+            <p>A warming, aromatic soup with goat meat, herbs, and a bold blend of spices.</p>
+            <span class="price">₦6,300</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=900&q=80"
+            alt="Chicken wrap filled with fresh ingredients"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Chicken Wrap Combo</h3>
+            <p>A flavorful chicken wrap with crunchy vegetables, creamy sauce, and fries.</p>
+            <span class="price">₦4,200</span>
+          </div>
+        </article>
+
+        <article class="food-card">
+          <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+            alt="Chocolate cake dessert"
+            loading="lazy"
+          />
+          <div class="food-card-content">
+            <h3>Royal Dessert Delight</h3>
+            <p>A rich, sweet treat to finish your meal on a delicious note.</p>
+            <span class="price">₦2,800</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="section-heading">
+        <h2>Contact Royal Bites</h2>
+        <p>Send us an enquiry or get in touch with us directly.</p>
+      </div>
+
+      <div class="contact-layout">
+        <form class="contact-form" id="contact-form">
+          <h3>Send an Enquiry</h3>
+
+          <div class="form-group">
+            <label for="full-name">Full name</label>
+            <input
+              type="text"
+              id="full-name"
+              name="fullName"
+              placeholder="Enter your full name"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email address"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="What is your enquiry about?"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Type your message here"
+              required
+            ></textarea>
+          </div>
+
+          <button class="button" type="submit">Submit</button>
+          <p class="form-note">
+            Submitting opens your email app so you can send your enquiry.
+          </p>
+        </form>
+
+        <aside class="contact-info">
+          <h3>For More Enquiries</h3>
+          <p><strong>Working hours:</strong><br />Monday–Saturday, 10:00 AM–9:00 PM</p>
+          <p><strong>Address:</strong><br />Lekki, Lagos, Nigeria</p>
+          <p>
+            <strong>Email:</strong><br />
+            <a href="mailto:ogundaredavid954@gmail.com">ogundaredavid954@gmail.com</a>
+          </p>
+          <p>
+            <strong>Phone:</strong><br />
+            <a href="tel:+2347046399526">07046399526</a>
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="thank-you">THANK YOU FOR PATRONISING US</p>
+    <p>&copy; 2026 ROYAL BITES. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const contactForm = document.querySelector("#contact-form");
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (!contactForm.reportValidity()) return;
+
+      const fullName = document.querySelector("#full-name").value.trim();
+      const email = document.querySelector("#email").value.trim();
+      const subject = document.querySelector("#subject").value.trim();
+      const message = document.querySelector("#message").value.trim();
+
+      const emailBody = [
+        `Name: ${fullName}`,
+        `Email: ${email}`,
+        "",
+        message
+      ].join("\n");
+
+      const mailtoLink =
+        `mailto:ogundaredavid954@gmail.com` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(emailBody)}`;
+
+      window.location.href = mailtoLink;
+    });
+  </script>
+</body>
+</html>
